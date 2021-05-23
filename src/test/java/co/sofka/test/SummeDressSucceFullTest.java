@@ -23,6 +23,7 @@ import java.util.*;
 import java.net.MalformedURLException;
 import java.net.URL;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
@@ -32,7 +33,7 @@ public class SummeDressSucceFullTest {
   JavascriptExecutor js;
   @BeforeAll
   public void setUp() {
-    System.setProperty("webdriver.chrome.driver","resource/chromedriver.exe");
+    System.setProperty("webdriver.chrome.driver","resources/chromedriver.exe");
     driver = new ChromeDriver();
     js = (JavascriptExecutor) driver;
     vars = new HashMap<String, Object>();
@@ -48,8 +49,7 @@ public class SummeDressSucceFullTest {
     driver.findElement(By.id("search_query_top")).click();
     driver.findElement(By.id("search_query_top")).sendKeys("Summer Dress");
     driver.findElement(By.name("submit_search")).click();
-    assertTrue( true, driver.findElement(By.className("heading-counter")).getText().concat("\n" +
-            "            4 results have been found.        "));
+    assertEquals(driver.findElement(By.className("heading-counter")).getText(), "4 results have been found.");
     //assertTrue(true, driver.findElement(By.className("lighter")).getText());
 
   }
