@@ -33,7 +33,7 @@ public class SunDressFailTest {
   JavascriptExecutor js;
   @BeforeAll
   public void setUp() {
-    System.setProperty("webdriver.chrome.driver","resource/chromedriver.exe");
+    System.setProperty("webdriver.chrome.driver","resources/chromedriver.exe");
     driver = new ChromeDriver();
     js = (JavascriptExecutor) driver;
     vars = new HashMap<String, Object>();
@@ -49,7 +49,7 @@ public class SunDressFailTest {
     driver.findElement(By.id("search_query_top")).click();
     driver.findElement(By.id("search_query_top")).sendKeys("Sun Dress");
     driver.findElement(By.id("search_query_top")).sendKeys(Keys.ENTER);
-    assertTrue( true, driver.findElement(By.className("heading-counter")).getText().concat("            0 results have been found.        "));
+    assertEquals(driver.findElement(By.className("heading-counter")).getText(), "0 results have been found.");
 
   }
 }
