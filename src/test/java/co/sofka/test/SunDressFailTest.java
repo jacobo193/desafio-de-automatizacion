@@ -49,7 +49,7 @@ public class SunDressFailTest {
     driver.findElement(By.id("search_query_top")).click();
     driver.findElement(By.id("search_query_top")).sendKeys("Sun Dress");
     driver.findElement(By.id("search_query_top")).sendKeys(Keys.ENTER);
-    assertEquals(driver.findElement(By.className("heading-counter")).getText(), "0 results have been found.");
+    assertEquals("0 results have been found.", driver.findElement(By.className("heading-counter")).getText());
 
   }
 }
